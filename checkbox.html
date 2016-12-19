@@ -8,7 +8,7 @@
   <body>
     <section id="app">
       <div class="">
-        <input type="checkbox"  @click="checkedAll" v-model="checked">
+        <input type="checkbox" v-model="checked">
         <span>全选</span>
       </div>
       <div class="items" v-for="item in datas">
@@ -32,25 +32,23 @@
             checked: null
           }
         },
-        methods: {
-          checkedAll: function() {
-            var _this = this;
-            if (_this.checked) {
-              _this.selected = [];
-            }else{
-              _this.selected = [];
-              _this.datas.forEach(function(item) {
-                _this.selected.push(item.id);
-              });
-            }
-          }
-        },
         watch: {
           selected: {
-            handler: function(){
-              this.checked = (this.selected.length === this.datas.length)
+            handler: function(val){
+                this.checked = (this.selected.length === this.datas.length)
             },
             deep: true
+          },
+          checked: function(val){
+          	var _this = this;
+          	if(val){
+          		_this.selected = [];
+          		_this.datas.forEach(function(item) {
+	            	_this.selected.push(item.id);
+          		});
+          	}else if(!val && this.selected.length === this.datas.length){
+          		this.selected = [];
+          	}
           }
         }
       })
