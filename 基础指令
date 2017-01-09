@@ -1,0 +1,10 @@
+v-if
+v-show 注：不支持<template>语法
+v-else  可以跟在v-if或v-show之后
+v-model 用于处理表单元素的双向数据绑定
+     参数： number 将用户输入转成number类型，如果转换之后为NaN,则返回原值
+           lazy 将数据监测从input事件改到change事件上面
+           debounce 数据刷新的最小延迟，一般用于存在ajax请求的情况
+v-for 1.0.17支持for of,之后版本支持in
+    $index 相应的索引值
+    
