@@ -1,0 +1,9 @@
+vue中数组变异的方法：
+push(),
+pop(),
+shift(),
+unshift(),
+splice(),
+sort(),
+reverse()
+只有数组触发了上述方法，才能引起视图的更新
