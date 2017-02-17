@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="temp">
+			<inner></inner>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var
+			comp = {
+				template: '<div>A custom component</div>'
+			}
+		new Vue({
+			el: '#temp',
+			components: {
+				'inner' : comp
+			}
+		})
+	</script>
+</html>

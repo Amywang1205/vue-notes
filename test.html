@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>router</title>
+		<script src="../vue1.0.28.js" type="text/javascript" charset="utf-8"></script>
+		<script src="vue-router0.7.3.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<template id="a" style="display: none;">
+			<div v-link="'b'">aaaa</div>
+		</template>
+		<template id="b" style="display: none;">
+			<div v-link="'a'">bbbb</div>
+		</template>
+		<div id="test">
+			<router-view></router-view>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var a = Vue.extend({
+			template: '#a'
+		})
+		var b = {
+			template: '#b'
+		};
+		var
+		    //创建路由根组件
+		    App = Vue.extend(),
+		    //创建路由实例
+		    router = new VueRouter();
+	    router.map({
+	    	'/a' : {
+	    		component: a
+	    	},
+	    	'/b': {
+	    		component: b
+	    	}
+	    });
+	    router.redirect({
+	    	'*' : '/a'
+	    })
+	    //路由启动
+		router.start(App,'#test');
+	</script>
+</html>

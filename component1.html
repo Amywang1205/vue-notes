@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="temp">
+			<my-comp></my-comp>
+			<my-comp></my-comp>
+			<my-comp></my-comp>
+		</div>
+	</body>
+	<script type="text/javascript">
+		Vue.component('my-comp',{
+			template: '<div v-on:click="num += 1">A custom component{{num}}</div>',
+			data: function(){
+				return {
+					num : 0
+				}
+			}
+		});
+		new Vue({
+			el : '#temp'
+		})
+	</script>
+</html>
