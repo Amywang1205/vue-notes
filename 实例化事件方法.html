@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>实例化事件方法</title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<!--
+			vm.$on 监听当前实例上的自定义事件
+			vm.$once 监听自定义事件，但是只触发一次
+			vm.$off 移除事件监听器
+			vm.$dispatch 派发事件，事件沿着父链冒泡
+			vm.$broadcast 广播事件，事件向下传导给所有的后代
+		-->
+		<div class="app">
+			<button @click="add">{{num}}</button>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el : '.app',
+			data: {
+				num : 1
+			},
+			methods: {
+				add : function(){
+					this.num ++;
+					this.$emit('addn',this.num)
+				}
+			}
+		})
+		vm.$on('addn',function(val){
+			console.log(val);
+		})
+	</script>
+</html>

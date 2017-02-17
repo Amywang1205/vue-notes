@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.error{
+				border:1px solid red;
+			}
+			input{
+				outline: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<input type="text" :class={'error':showError} @mouseup="change"/>
+		</div>		
+	</body>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el: '#box',
+			data:{
+				showError: false
+			},
+			methods:{
+				change: function(){
+					console.log(this.showError);
+					this.showError = !this.showError;
+				}
+			}
+		});
+	</script>
+</html>

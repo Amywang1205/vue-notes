@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>slot</title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<my-component>
+				<p slot="one">hi,slots</p>
+			</my-component>
+		</div>
+	</body>
+	<script type="text/javascript">
+		Vue.component('my-component',{
+			template: `<div><slot name="one"></slot></div>`
+		});
+		new Vue({
+			el: '#app'
+		})
+	</script>
+</html>

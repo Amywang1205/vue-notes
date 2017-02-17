@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue</title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app" @click="change">
+			<input type="text" :value="val"/>
+			<span>{{val}}</span>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var 
+			vm = new Vue({
+				el: '#app',
+				data: {
+					val: '啦啦啦'
+				},
+				methods:{
+					change: function(){
+						this.val = '呼呼呼';
+						console.log(this);
+					}
+				}
+			});
+	</script>
+</html>

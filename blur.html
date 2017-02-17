@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	<body>
+		<encapsulated-component inline-template>
+	        <header>
+	            <cart-status></cart-status>
+	        </header>
+	        <cart></cart>
+	    </encapsulated-component>
+	</body>
+	<script type="text/javascript">
+		Vue.component('encapsulated-component',
+		  {
+		    data: function() {
+		        return	{
+		           total: 20
+		        }
+		    }
+		  }
+		);
+		Vue.component('cart-status',{
+		    inherit: true,
+		    template: '<p><b>cart-status:</b> {{total}}</p>',
+		  }
+		);
+		Vue.component('cart',{
+		    inherit: true,
+		    template: '<p><b>cart:</b> {{total}}</p><ul> <li v-repeat="items">{{title}}</li> </ul><button v-on="click: increaseTotal, blur: onBlur">inc</button>',
+		    data: function() {
+		      return {
+		        items: [{title: "t1"}, {title: "t2"}]
+		      }
+		    },
+		    methods: {
+		        increaseTotal: function(){
+		        	 this.$parent.total += 20;
+		        },
+		        onBlur: function(){
+		            alert('blur');
+		        }
+		  	}      
+		  }
+		);
+		
+		var vue = new Vue({
+		    el: 'body'
+		});
+	</script>
+</html>

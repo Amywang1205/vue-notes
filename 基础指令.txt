@@ -1,0 +1,23 @@
+v-if
+v-show 注：不支持<template>语法
+v-else  可以跟在v-if或v-show之后
+v-model 用于处理表单元素的双向数据绑定
+     参数： number 将用户输入转成number类型，如果转换之后为NaN,则返回原值
+           lazy 将数据监测从input事件改到change事件上面
+           debounce 数据刷新的最小延迟，一般用于存在ajax请求的情况
+v-for 1.0.17支持for of,之后版本支持in
+    $index 相应的索引值
+v-bind	
+	修饰符：.sync 双向绑定
+		  .once 单次绑定
+		  .camel 将绑定的名称转换成驼峰命名
+v-on	$event 获取事件对象
+	修饰符: .stop      调用event.stopPropagation()
+			.prevent 调用event.preventDefault()
+			.capture 捕获阶段执行函数
+			.self    目标元素为自身时调用
+			.native  监听组件根元素的原生时间
+			.{keyCode | keyAlias} 键盘事件
+v-ref 把DOM元素绑定在组件上
+v-pre 跳过没有指令的节点
+v-clock 

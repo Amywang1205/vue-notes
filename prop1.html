@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	<body>
+		<div id="box">
+			<child msg="hello"></child>
+		</div>
+	</body>
+	<script type="text/javascript">
+		Vue.component('child',{
+			props: ['msg'],
+			template: '<span>{{msg}},DDFE!</span>'
+		});
+		var a = Vue.extend({
+			props: ['msgSend'],
+			template: '<div>{{msgSend}}DDFE!</div>',
+			replace: true
+		});
+		var b = Vue.extend({
+			template: '<div>parent<a :msg-send="hello"></a></div>',
+			data: function(){
+				return {
+					'hello': 'hello,'
+				}
+			},
+			components: {
+				'a' : a
+			}
+		});
+		var vm = new Vue ({
+			el : '#box',
+			components: {
+				'msg-send': b
+			}
+		})
+	</script>
+</html>

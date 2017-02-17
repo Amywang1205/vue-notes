@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<input type="text" v-model="d" />
+			<ul>
+				<li>a:{{a}}</li>
+				<li>b:{{b}}</li>
+				<li>c:{{c}}</li>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript">
+		/*
+		 	computed
+		 		cache   数据缓存
+		 		getter	获取实例中的数据返回计算出来的数据
+		 		setter  计算出来的数据变化时，也会导致实例中数据的改变
+		 */
+		new Vue({
+			el: '#app',
+			data: {
+				a: 1,
+				b: 2
+			},
+			computed: {
+				c : function(){
+					//只有get的情况
+					return this.a + this.b
+				},
+				d: {
+					get : function(){
+						return this.a + this.b
+					},
+					set: function(newVal){
+						this.a = newVal - this.b;
+						this.b = newVal - this.a;
+					}
+				}
+			}
+		})
+	</script>
+</html>

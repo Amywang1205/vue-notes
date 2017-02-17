@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		#box{
+			width: 100px;
+			height: 60px;
+		}
+		#box div{
+			width: 100%;
+			margin-bottom: 10px;
+			background-color: red;
+		}
+	</style>
+	<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	<body>
+		<div id="box">
+			<div v-for="item in render" @click="click">{{item}}</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var
+			vm = new Vue({
+				el:'#box',
+				data:{
+					render:[1,2],
+					i: 3
+				},
+				methods:{
+					click: function(){
+						this.render.push(this.i);
+					}
+				},
+				watch:{
+					render:function(){
+						console.log(1);
+					}
+				}
+			});
+	</script>
+</html>

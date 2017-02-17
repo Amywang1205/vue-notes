@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app" v-hooo:hello.a.b="message"></div>
+		<script type="text/javascript">
+			Vue.directive('hooo',{
+				bind: function(el,binding,vnode){
+					//只调用一次，指令第一次绑定到元素时，调用，可以用于初始化
+					var s = JSON.stringify;
+					console.dir(vnode);
+				    el.innerHTML =
+				      'name: '       + s(binding.name) + '<br>' +
+				      'value: '      + s(binding.value) + '<br>' +
+				      'expression: ' + s(binding.expression) + '<br>' +
+				      'argument: '   + s(binding.arg) + '<br>' +
+				      'modifiers: '  + s(binding.modifiers) + '<br>' +
+				      'vnode keys: ' + Object.keys(vnode).join(', ')
+				},
+				inserted: function(){
+					//被绑定元素插入父节点时调用
+				},
+				update: function(oldVal,newVal){
+					//绑定的值发生变化时调用
+				},
+				componentUpdated: function(){
+					//模板发生变化时
+				},
+				unbind: function(){
+					指令解绑是调用
+				}
+			})
+			new Vue({
+				el: '#app',
+				data: {
+					 message: 'hello!'
+				}
+			})
+			/*
+			 	钩子函数的参数
+			 	el: 指令绑定的元素，可以直接用来操作DOM
+			 	binding: 一个对象，包含以下属性：
+			 		name: 指令名，不包括v-前缀
+			 		value: 指令的绑定值 	例如：v-hooo="1+1"
+			 		oldValue: 之前绑定的值
+			 		expression: 绑定值的字符串形式
+			 		arg: 传给指令的参数
+			 		modifiers: 一个包含修饰符的对象
+			 	vnode: Vue编译生成的虚拟节点
+			 	oldVnode: 上一个虚拟节点，更新类函数才可使用
+			 */
+		</script>
+	</body>
+</html>

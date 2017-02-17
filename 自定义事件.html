@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>自定义事件</title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<button @click="addn">{{num}}</button>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el: '#app',
+			data : {
+				num : 1
+			},
+			methods: {
+				addn: function(){
+					this.num ++;
+					this.$emit('add',this.num)
+				}
+			}
+		})
+		vm.$on('add',function(val){
+			console.log(val);
+		})
+	</script>
+</html>
